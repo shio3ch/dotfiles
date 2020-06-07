@@ -167,9 +167,13 @@ if has('persistent_undo')
 endif
 
 
-"--------------------------------------------------------------
+"--------------------------------------------------------------↲
 " dein.vim
-"--------------------------------------------------------------
+" https://github.com/Shougo/dein.vim
+" 
+" install command:
+" :call dein#install()
+"--------------------------------------------------------------↲
 if &compatible
   set nocompatible
 endif
@@ -184,7 +188,11 @@ if dein#load_state('~/.cache/dein')
   if !has('nvim')
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
+    
   endif
+
+  " Load TOML
+  call dein#load_toml('~/.vim/dein.toml', { 'lazy': 0 })
 
   call dein#end()
   call dein#save_state()
@@ -193,4 +201,7 @@ endif
 filetype plugin indent on
 syntax enable
 
+
+
+"---
 
