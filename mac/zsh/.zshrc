@@ -1,50 +1,34 @@
-source .zprofile
+[ -r /etc/zshrc ] && . /etc/zshrc
 
-#--------------------------------------------------------------
-# 環境変数
-#--------------------------------------------------------------
+# -------------------------------------------------------------
+# Load secrets (API keys, tokens, etc.)
+for file in ~/.secrets/*.sh(N); do
+  source "$file"
+done
 
+# nodebrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 
-#--------------------------------------------------------------
-# プロンプト表示
-#--------------------------------------------------------------
-#PROMPT='@%F{blue}%n%f%F{green}[%~]%f %# '
-#RPROMPT=''
+# coreutils
+# mac標準のBSDコマンドを coreutils の GNUコマンドに置き換える
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 
-#--------------------------------------------------------------
-# Gitプロンプトプラグイン
-# curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh > ~/.zsh/plugin/.git-prompt.sh
-#--------------------------------------------------------------
-#source ~/.zsh/plugin/.git-prompt.sh
-#setopt PROMPT_SUBST
-#PS1='%n@%m [%F{yellow}%c%f]$(__git_ps1 " (%s)")\$ '
-#RPROMPT='$(__git_ps1 "(%s)")'
+# -------------------------------------------------------------
+# starship
+eval "$(starship init zsh)"
 
-
-#--------------------------------------------------------------
-# Zinit plugins
-#--------------------------------------------------------------
-source ~/.zinit/bin/zinit.zsh
-
-# 補完
-# zinit light zsh-users/zsh-autosuggestions
-
-# シンタックスハイライト
-zinit light zdharma/fast-syntax-highlighting
-#
-# # Ctrl+r でコマンド履歴を検索
-zinit light zdharma/history-search-multi-word
-
-#--------------------------------------------------------------
-# Prezto
-#--------------------------------------------------------------
-zinit snippet PZT::modules/helper/init.zsh
-zinit ice depth=1; zinit light romkatv/powerlevel10k
-
-#--------------------------------------------------------------
-# Prompt plugin - powerlevel10k
-# https://github.com/romkatv/powerlevel10k
-#--------------------------------------------------------------
-[[ ! -f ~/.zsh/plugins/.p10k.zsh ]] || source ~/.zsh/plugins/.p10k.zsh
+# -------------------------------------------------------------
+# gls コマンドに色を付ける
+alias ls='ls --color=auto'
 
 
+# pnpm
+export PNPM_HOME="/Users/shio3ch/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# Added by Antigravity
+export PATH="/Users/shio3ch/.antigravity/antigravity/bin:$PATH"

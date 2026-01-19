@@ -1,40 +1,79 @@
 #!/bin/bash
-set -eu
 
-output_help_message() {
-  echo "Usage: $0 [--help | -h]" 0>&2
-  echo ""
+set -e
+
+DOTFILES_DIR="$(cd "$(dirname "$0")/../.." && pwd)"
+MAC_DIR="$DOTFILES_DIR/mac"
+BACKUP_DIR="$HOME/.dotfiles_backup/$(date +%Y%m%d_%H%M%S)"
+
+echo "=== Dotfiles Installer ==="
+echo "Dotfiles directory: $DOTFILES_DIR"
+echo ""
+
+# バックアップとリンク作成の関数
+link_file() {
+    local src="$1"
+    local dest="$2"
+
+    if [ -e "$dest" ] || [ -L "$dest" ]; then
+        mkdir -p "$BACKUP_DIR"
+        echo "  Backup: $dest -> $BACKUP_DIR/"
+        mv "$dest" "$BACKUP_DIR/"
+    fi
+
+    ln -sf "$src" "$dest"
+    echo "  Linked: $dest -> $src"
 }
 
-make_symbolic_link() {
-  echo "make dotfile symbolic links.."
-  DOTFILES_DIR=$(cd $(dirname $0);cd ../; pwd)
-  
-  # .vim
-  ln -s ${DOTFILES_DIR}/vim/.vimrc ${HOME}/.vimrc
-  ln -s ${DOTFILES_DIR}/vim/.vim ${HOME}/.vim
+# 必要なディレクトリを作成
+echo "[1/3] Creating directories..."
+mkdir -p "$HOME/.config/git"
+echo "  Created: ~/.config/git"
+mkdir -p "$HOME/.secrets"
+chmod 700 "$HOME/.secrets"
+echo "  Created: ~/.secrets (mode 700)"
 
-  # .zsh
-  ln -s ${DOTFILES_DIR}/zsh/.zshrc ${HOME}/.zshrc
-  ln -s ${DOTFILES_DIR}/zsh ${HOME}/.zsh
+# シンボリックリンクを作成
+echo ""
+echo "[2/3] Creating symlinks..."
 
-  echo "maked symbolic links!"
-}
+# zsh
+link_file "$MAC_DIR/zsh/.zshrc" "$HOME/.zshrc"
 
-while [ $# -gt 0 ];do
-  case ${1} in
-    --debug|-d)
-      set -eux
-      ;;
-    --help|-h)
-      output_help_message
-      exit 1
-      ;;
-    *)
-      ;;
-  esac
-  shift
+# starship
+link_file "$MAC_DIR/starship/starship.toml" "$HOME/.config/starship.toml"
+
+# git
+link_file "$MAC_DIR/git/.gitconfig" "$HOME/.gitconfig"
+link_file "$MAC_DIR/git/ignore" "$HOME/.config/git/ignore"
+
+# wezterm
+link_file "$MAC_DIR/wezterm" "$HOME/.config/wezterm"
+
+# secrets テンプレートをコピー
+echo ""
+echo "[3/3] Setting up secrets templates..."
+for template in "$MAC_DIR/secrets/"*.template; do
+    if [ -f "$template" ]; then
+        filename=$(basename "$template")
+        dest="$HOME/.secrets/$filename"
+        if [ ! -e "$dest" ]; then
+            cp "$template" "$dest"
+            chmod 600 "$dest"
+            echo "  Copied: $dest"
+        else
+            echo "  Skipped (exists): $dest"
+        fi
+    fi
 done
 
-make_symbolic_link
-exit 0
+echo ""
+echo "=== Done! ==="
+if [ -d "$BACKUP_DIR" ]; then
+    echo "Backup files saved to: $BACKUP_DIR"
+fi
+echo ""
+echo "Next steps:"
+echo "  1. Edit files in ~/.secrets/ to add your API keys"
+echo "  2. Rename .template files to .sh (e.g., example.sh.template -> openai.sh)"
+echo "  3. Restart your shell or run: source ~/.zshrc"
