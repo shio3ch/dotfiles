@@ -23,8 +23,11 @@ export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 eval "$(starship init zsh)"
 
 # -------------------------------------------------------------
-# gls コマンドに色を付ける
+# ls コマンドに色を付ける
 alias ls='ls --color=auto'
+
+# al コマンドを作成する
+alias al='ls -al --color=auto'
 
 # vim を nvim に置き換える
 alias vim='nvim'
