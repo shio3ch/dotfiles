@@ -6,6 +6,11 @@ for file in ~/.secrets/*.sh(N); do
   source "$file"
 done
 
+# Load hooks (brew wrapper, etc.)
+for file in ~/.zsh/hooks/*.zsh(N); do
+  source "$file"
+done
+
 # nodebrew
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
@@ -20,6 +25,9 @@ eval "$(starship init zsh)"
 # -------------------------------------------------------------
 # gls コマンドに色を付ける
 alias ls='ls --color=auto'
+
+# vim を nvim に置き換える
+alias vim='nvim'
 
 
 # pnpm

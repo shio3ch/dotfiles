@@ -25,8 +25,18 @@ link_file() {
     echo "  Linked: $dest -> $src"
 }
 
+# Homebrew でインストールが必要なパッケージ
+echo "[1/4] Installing packages via Homebrew..."
+if command -v brew &> /dev/null; then
+    brew install neovim
+    echo "  Installed: neovim"
+else
+    echo "  Warning: Homebrew not found. Please install neovim manually."
+fi
+
 # 必要なディレクトリを作成
-echo "[1/3] Creating directories..."
+echo ""
+echo "[2/4] Creating directories..."
 mkdir -p "$HOME/.config/git"
 echo "  Created: ~/.config/git"
 mkdir -p "$HOME/.secrets"
@@ -35,7 +45,7 @@ echo "  Created: ~/.secrets (mode 700)"
 
 # シンボリックリンクを作成
 echo ""
-echo "[2/3] Creating symlinks..."
+echo "[3/4] Creating symlinks..."
 
 # zsh
 link_file "$MAC_DIR/zsh/.zshrc" "$HOME/.zshrc"
@@ -47,12 +57,12 @@ link_file "$MAC_DIR/starship/starship.toml" "$HOME/.config/starship.toml"
 link_file "$MAC_DIR/git/.gitconfig" "$HOME/.gitconfig"
 link_file "$MAC_DIR/git/ignore" "$HOME/.config/git/ignore"
 
-# wezterm
-link_file "$MAC_DIR/wezterm" "$HOME/.config/wezterm"
+# nvim
+link_file "$MAC_DIR/nvim" "$HOME/.config/nvim"
 
 # secrets テンプレートをコピー
 echo ""
-echo "[3/3] Setting up secrets templates..."
+echo "[4/4] Setting up secrets templates..."
 for template in "$MAC_DIR/secrets/"*.template; do
     if [ -f "$template" ]; then
         filename=$(basename "$template")

@@ -12,8 +12,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 dotfiles/
 ├── mac/
 │   ├── git/           # Git設定 (.gitconfig, ignore)
+│   ├── nvim/          # Neovim設定 (LazyVim)
 │   ├── starship/      # Starshipプロンプト設定
-│   ├── wezterm/       # WezTerm設定 (Lua)
 │   └── zsh/           # Zsh設定 (.zshrc)
 └── windows/
     └── terminal/      # Windows Terminal設定
@@ -32,13 +32,16 @@ ln -sf ~/dotfiles/mac/zsh/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/mac/starship/starship.toml ~/.config/starship.toml
 ln -sf ~/dotfiles/mac/git/.gitconfig ~/.gitconfig
 ln -sf ~/dotfiles/mac/git/ignore ~/.config/git/ignore
-ln -sf ~/dotfiles/mac/wezterm ~/.config/wezterm
+
+# Neovim（既存の設定がある場合は先にバックアップ）
+# mv ~/.config/nvim ~/.config/nvim.bak
+ln -sfn ~/dotfiles/mac/nvim ~/.config/nvim
 ```
 
 ## 使用ツール
 
 - **Starship**: Catppuccin Mochaテーマのシェルプロンプト
-- **WezTerm**: Catppuccin Mochaテーマ、tmux風キーバインド（Leader: Ctrl+q）
 - **nodebrew**: Node.jsバージョン管理
 - **pnpm**: パッケージマネージャ
 - **coreutils**: GNU版コマンド（Homebrew経由）
+- **Neovim**: LazyVimベースの設定
