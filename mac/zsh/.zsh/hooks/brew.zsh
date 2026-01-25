@@ -6,11 +6,11 @@ brew() {
   case "$1" in
     install|uninstall|remove|upgrade)
       echo "Updating Brewfile..."
-      command brew bundle dump --force --file=~/dotfiles/mac/brew/Brewfile
+      command brew bundle dump --force --file=~/workspace/dotfiles/mac/brew/Brewfile
 
-      if ! git -C ~/dotfiles diff --quiet mac/brew/Brewfile 2>/dev/null; then
-        git -C ~/dotfiles add mac/brew/Brewfile
-        git -C ~/dotfiles commit -m "brew: auto-update Brewfile"
+      if ! git -C ~/workspace/dotfiles diff --quiet mac/brew/Brewfile 2>/dev/null; then
+        git -C ~/workspace/dotfiles add mac/brew/Brewfile
+        git -C ~/workspace/dotfiles commit -m "brew: auto-update Brewfile"
       fi
       ;;
   esac

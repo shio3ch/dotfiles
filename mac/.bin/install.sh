@@ -39,6 +39,8 @@ echo ""
 echo "[2/4] Creating directories..."
 mkdir -p "$HOME/.config/git"
 echo "  Created: ~/.config/git"
+mkdir -p "$HOME/.config/ghostty"
+echo "  Created: ~/.config/ghostty"
 mkdir -p "$HOME/.secrets"
 chmod 700 "$HOME/.secrets"
 echo "  Created: ~/.secrets (mode 700)"
@@ -59,6 +61,9 @@ link_file "$MAC_DIR/git/ignore" "$HOME/.config/git/ignore"
 
 # nvim
 link_file "$MAC_DIR/nvim" "$HOME/.config/nvim"
+
+# ghostty
+link_file "$MAC_DIR/ghostty/config" "$HOME/.config/ghostty/config"
 
 # secrets テンプレートをコピー
 echo ""
