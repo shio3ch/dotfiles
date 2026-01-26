@@ -133,11 +133,7 @@ keybind = cmd+shift+comma=reload_config
 #keybind = shift+enter=text:\x1b\r
 keybind = shift+enter=text:\n
 
-# スプリット操作
-keybind = cmd+s=new_split:left
-keybind = cmd+d=new_split:down
-keybind = cmd+f=new_split:up
-keybind = cmd+g=new_split:right
+# split
 keybind = cmd+w=close_surface
 
 # スプリット間移動（Vim風）

@@ -32,6 +32,9 @@ alias al='ls -al --color=auto'
 # vim を nvim に置き換える
 alias vim='nvim'
 
+# lazygit
+alias lgit='lazygit'
+
 
 # pnpm
 export PNPM_HOME="/Users/shio3ch/Library/pnpm"
