@@ -60,7 +60,7 @@ background-blur-radius = 15
 #font-family = "Maple Mono"
 font-family = "Maple Mono NF CN"
 font-style = "Heavy"
-font-size = 14
+font-size = 15
 
 #background-image = "~/Pictures/oberon.jpg"
 #background-image-opacity = 0.2
@@ -70,8 +70,8 @@ font-size = 14
 # ウィンドウ設定
 # ========================================
 
-window-padding-x = 10
-window-padding-y = 4
+#window-padding-x = 10
+#window-padding-y = 4
 window-padding-balance = true
 window-theme = ghostty
 
@@ -101,7 +101,7 @@ window-save-state = always
 
 
 # 非アクティブなウインドウを薄くしない
-unfocused-split-opacity = 1
+unfocused-split-opacity = 0.7
 
 # ========================================
 # パフォーマンス設定
