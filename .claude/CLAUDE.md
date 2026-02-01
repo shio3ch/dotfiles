@@ -11,6 +11,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ```
 dotfiles/
 ├── mac/
+│   ├── claude/        # Claude Code設定 (CLAUDE.md, settings.json)
 │   ├── ghostty/       # Ghosttyターミナル設定
 │   ├── git/           # Git設定 (.gitconfig, ignore)
 │   ├── nvim/          # Neovim設定 (LazyVim)
@@ -40,6 +41,10 @@ ln -sfn ~/dotfiles/mac/nvim ~/.config/nvim
 
 # Ghostty
 ln -sf ~/dotfiles/mac/ghostty/config ~/.config/ghostty/config
+
+# Claude Code
+ln -sf ~/dotfiles/mac/claude/CLAUDE.md ~/.claude/CLAUDE.md
+ln -sf ~/dotfiles/mac/claude/settings.json ~/.claude/settings.json
 ```
 
 ## 開発ルール
@@ -54,6 +59,7 @@ ln -sf ~/dotfiles/mac/ghostty/config ~/.config/ghostty/config
 
 ## 使用ツール
 
+- **Claude Code**: AI搭載のCLI開発ツール
 - **Ghostty**: Catppuccin Mochaテーマのターミナルエミュレータ
 - **Starship**: Catppuccin Mochaテーマのシェルプロンプト
 - **nodebrew**: Node.jsバージョン管理

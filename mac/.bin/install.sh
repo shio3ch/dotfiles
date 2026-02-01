@@ -41,6 +41,8 @@ mkdir -p "$HOME/.config/git"
 echo "  Created: ~/.config/git"
 mkdir -p "$HOME/.config/ghostty"
 echo "  Created: ~/.config/ghostty"
+mkdir -p "$HOME/.claude"
+echo "  Created: ~/.claude"
 mkdir -p "$HOME/.secrets"
 chmod 700 "$HOME/.secrets"
 echo "  Created: ~/.secrets (mode 700)"
@@ -64,6 +66,10 @@ link_file "$MAC_DIR/nvim" "$HOME/.config/nvim"
 
 # ghostty
 link_file "$MAC_DIR/ghostty/config" "$HOME/.config/ghostty/config"
+
+# claude
+link_file "$MAC_DIR/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
+link_file "$MAC_DIR/claude/settings.json" "$HOME/.claude/settings.json"
 
 # secrets テンプレートをコピー
 echo ""
