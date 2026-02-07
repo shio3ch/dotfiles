@@ -88,6 +88,14 @@ for template in "$MAC_DIR/secrets/"*.template; do
     fi
 done
 
+# macOS の設定
+echo ""
+echo "[5/5] Configuring macOS settings..."
+defaults write com.apple.finder AppleShowAllFiles TRUE
+echo "  Finder: Show hidden files"
+killall Finder
+echo "  Finder: Restarted to apply settings"
+
 echo ""
 echo "=== Done! ==="
 if [ -d "$BACKUP_DIR" ]; then
