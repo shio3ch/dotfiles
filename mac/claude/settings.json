@@ -1,13 +1,47 @@
 {
   "enabledPlugins": {},
+  "permissions": {
+    "allow": [
+      "Bash(gh *)",
+      "Bash(git *)",
+      "Bash(npm run *)",
+      "Bash(npm test *)",
+      "Bash(npm start *)",
+      "Bash(npm exec *)",
+      "Bash(npm ls *)",
+      "Bash(npm outdated *)",
+      "Bash(npm info *)",
+      "Bash(npx *)",
+      "Bash(deno run *)",
+      "Bash(deno test *)",
+      "Bash(deno task *)",
+      "Bash(deno fmt *)",
+      "Bash(deno lint *)",
+      "Bash(deno check *)",
+      "Bash(deno bench *)",
+      "Bash(deno doc *)",
+      "Bash(deno info *)",
+      "Read(**)",
+      "Edit(**)"
+    ],
+    "deny": [
+      "Bash(git push * --force *)",
+      "Bash(git push --force *)",
+      "Bash(rm -rf *)",
+      "Bash(sudo *)",
+      "Edit(//**/.*env*)"
+    ]
+  },
   "mcpServers": {
     "github": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
       "env": {
         "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
       }
     }
   }
 }
-
