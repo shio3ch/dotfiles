@@ -1,5 +1,4 @@
 {
-  "enabledPlugins": {},
   "permissions": {
     "allow": [
       "Bash(gh *)",
@@ -32,6 +31,10 @@
       "Edit(//**/.*env*)"
     ]
   },
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "enabledPlugins": {},
   "mcpServers": {
     "github": {
       "command": "npx",
