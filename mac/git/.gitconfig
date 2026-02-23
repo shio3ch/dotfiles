@@ -1,6 +1,4 @@
-# This is Git's per-user configuration file.
-[user]
-	name = ***
-	email = ***
+[include]
+	path = ~/.gitconfig.user
 [core]
 	editor = vim

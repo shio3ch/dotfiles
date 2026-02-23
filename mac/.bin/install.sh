@@ -71,9 +71,19 @@ link_file "$MAC_DIR/ghostty/config" "$HOME/.config/ghostty/config"
 link_file "$MAC_DIR/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
 link_file "$MAC_DIR/claude/settings.json" "$HOME/.claude/settings.json"
 
-# secrets テンプレートをコピー
+# テンプレートをコピー
 echo ""
-echo "[4/4] Setting up secrets templates..."
+echo "[4/4] Setting up templates..."
+
+# git ユーザー情報
+if [ ! -e "$HOME/.gitconfig.user" ]; then
+    cp "$MAC_DIR/git/.gitconfig.user" "$HOME/.gitconfig.user"
+    echo "  Copied: ~/.gitconfig.user"
+else
+    echo "  Skipped (exists): ~/.gitconfig.user"
+fi
+
+# secrets テンプレート
 for template in "$MAC_DIR/secrets/"*.template; do
     if [ -f "$template" ]; then
         filename=$(basename "$template")
@@ -103,6 +113,7 @@ if [ -d "$BACKUP_DIR" ]; then
 fi
 echo ""
 echo "Next steps:"
-echo "  1. Edit files in ~/.secrets/ to add your API keys"
-echo "  2. Rename .template files to .sh (e.g., example.sh.template -> openai.sh)"
-echo "  3. Restart your shell or run: source ~/.zshrc"
+echo "  1. Edit ~/.gitconfig.user to set your name and email"
+echo "  2. Edit files in ~/.secrets/ to add your API keys"
+echo "  3. Rename .template files to .sh (e.g., example.sh.template -> openai.sh)"
+echo "  4. Restart your shell or run: source ~/.zshrc"
