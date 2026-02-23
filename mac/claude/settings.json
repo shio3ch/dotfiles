@@ -20,6 +20,7 @@
       "Bash(deno bench *)",
       "Bash(deno doc *)",
       "Bash(deno info *)",
+      "mcp__serena__*",
       "Read(**)",
       "Edit(**)"
     ],
