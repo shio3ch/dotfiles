@@ -13,7 +13,7 @@ dotfiles/
 ├── mac/
 │   ├── claude/        # Claude Code設定 (CLAUDE.md, settings.json)
 │   ├── ghostty/       # Ghosttyターミナル設定
-│   ├── git/           # Git設定 (.gitconfig, ignore)
+│   ├── git/           # Git設定 (.gitconfig, .gitconfig.user, ignore)
 │   ├── nvim/          # Neovim設定 (LazyVim)
 │   ├── starship/      # Starshipプロンプト設定
 │   └── zsh/           # Zsh設定 (.zshrc)
@@ -34,6 +34,10 @@ ln -sf ~/dotfiles/mac/zsh/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/mac/starship/starship.toml ~/.config/starship.toml
 ln -sf ~/dotfiles/mac/git/.gitconfig ~/.gitconfig
 ln -sf ~/dotfiles/mac/git/ignore ~/.config/git/ignore
+
+# git ユーザー情報（初回のみコピー、実際の値を記入）
+cp ~/dotfiles/mac/git/.gitconfig.user ~/.gitconfig.user
+# ~/.gitconfig.user に name と email を設定すること
 
 # Neovim（既存の設定がある場合は先にバックアップ）
 # mv ~/.config/nvim ~/.config/nvim.bak
