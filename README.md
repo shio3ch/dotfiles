@@ -1,49 +1,72 @@
 # dotfiles
 
-設定ファイルの掃き溜めです。
+設定ファイルの掃き溜めです。[chezmoi](https://chezmoi.io/) で管理しています。
 
 ## 構造
 
 ```
 dotfiles/
-├── mac/
-│   ├── .bin/          # インストールスクリプト
-│   ├── git/           # Git設定
-│   ├── starship/      # Starshipプロンプト
-│   ├── wezterm/       # WezTermターミナル
-│   └── zsh/           # Zsh設定
+├── .chezmoi.toml.tmpl          # chezmoi設定テンプレート（Git user情報）
+├── Brewfile                    # Homebrewパッケージリスト
+├── dot_zshrc                   # ~/.zshrc
+├── dot_gitconfig.tmpl          # ~/.gitconfig（テンプレート）
+├── dot_config/
+│   ├── git/ignore              # ~/.config/git/ignore
+│   ├── starship/starship.toml  # ~/.config/starship.toml
+│   ├── nvim/                   # ~/.config/nvim/（LazyVim）
+│   └── ghostty/config          # ~/.config/ghostty/config
+├── dot_claude/
+│   ├── CLAUDE.md               # ~/.claude/CLAUDE.md
+│   └── settings.json           # ~/.claude/settings.json
+├── dot_zsh/hooks/brew.zsh      # ~/.zsh/hooks/brew.zsh
+├── run_onchange_install-packages.sh.tmpl  # Homebrewパッケージインストール
+├── run_once_setup-macos.sh     # macOS初期設定
+├── run_once_setup-secrets.sh.tmpl  # ~/.secrets/ ディレクトリのセットアップ
 └── windows/
-    └── terminal/      # Windows Terminal設定
+    └── terminal/               # Windows Terminal設定（手動）
 ```
 
-## mac
+## macOS セットアップ
+
+### 前提条件
+
+- [Homebrew](https://brew.sh/) をインストール済みであること
 
 ### インストール
 
 ```shell
-cd ~
-git clone https://github.com/shio3ch/dotfiles.git
-~/dotfiles/mac/.bin/install.sh
+# chezmoi を Homebrew でインストール
+brew install chezmoi
+
+# dotfiles を初期化（Git user name/email を対話的に入力）
+chezmoi init --apply https://github.com/shio3ch/dotfiles.git
 ```
 
-### 含まれる設定
+`chezmoi init --apply` を実行すると:
+1. `~/.local/share/chezmoi/` にこのリポジトリをクローン
+2. Git user name / email を対話的に入力
+3. dotfiles を `$HOME` に配置
+4. Homebrew パッケージをインストール（`Brewfile`）
+5. macOS 初期設定を適用
 
-| 設定 | 説明 |
-|-----|------|
-| `.zshrc` | Zsh設定（starship, nodebrew, pnpm, coreutils） |
-| `starship.toml` | Starshipプロンプト（Catppuccin Mocha） |
-| `.gitconfig` | Git設定 |
-| `wezterm/` | WezTerm設定（Catppuccin Mocha, tmux風キーバインド） |
+### 更新
 
-### 前提条件
+```shell
+chezmoi update
+```
 
-- [Homebrew](https://brew.sh/)
-- [Starship](https://starship.rs/) - `brew install starship`
-- [WezTerm](https://wezfurlong.org/wezterm/) - `brew install --cask wezterm`
-- [CaskaydiaCove Nerd Font](https://www.nerdfonts.com/) - `brew install --cask font-caskaydia-cove-nerd-font`
-- [nodebrew](https://github.com/hokaccha/nodebrew)
-- [pnpm](https://pnpm.io/)
-- coreutils - `brew install coreutils`
+### dotfiles の編集
+
+```shell
+# 特定ファイルを編集
+chezmoi edit ~/.zshrc
+
+# 変更を確認
+chezmoi diff
+
+# 変更を適用
+chezmoi apply
+```
 
 ## windows
 
