@@ -23,11 +23,11 @@ export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 eval "$(starship init zsh)"
 
 # -------------------------------------------------------------
-# ls コマンドに色を付ける
-alias ls='ls --color=auto'
-
-# al コマンドを作成する
-alias al='ls -al --color=auto'
+# eza を ls の代わりに使う
+alias ls='eza --icons'
+alias ll='eza -l --icons'
+alias la='eza -la --icons'
+alias al='eza -la --icons'
 
 # vim を nvim に置き換える
 alias vim='nvim'
@@ -46,3 +46,4 @@ esac
 
 # Added by Antigravity
 export PATH="/Users/shio3ch/.antigravity/antigravity/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
