@@ -50,10 +50,20 @@ chezmoi init --apply https://github.com/shio3ch/dotfiles.git
 
 ### 設定ファイルの追加・変更時
 
-新しいツールの設定を追加、または既存の設定構造を変更した場合、以下のファイルも必ず同期すること:
+1. このリポジトリ内のファイルを直接編集する（`chezmoi edit` でも可）
+2. 変更後は必ず `chezmoi apply` で `$HOME` に反映する
+3. 新しいツールの設定を追加・構造変更した場合は **`.claude/CLAUDE.md`** の構造セクションも更新すること
 
-1. **`.claude/CLAUDE.md`** - 構造セクションとセットアップ手順を更新
-2. 必要に応じて使用ツールセクションも更新
+```shell
+# 変更を確認してから適用
+chezmoi diff
+chezmoi apply
+
+# または alias を使う（dot_zshrc に定義済み）
+cdiff   # chezmoi diff
+capply  # chezmoi apply
+cupdate # chezmoi update（リモートから pull して apply）
+```
 
 ## 使用ツール
 
