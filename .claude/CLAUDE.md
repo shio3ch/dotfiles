@@ -4,65 +4,70 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## リポジトリ概要
 
-個人用dotfiles（設定ファイル）の管理リポジトリ。macOSとWindowsの環境設定を管理。
+個人用dotfiles（設定ファイル）の管理リポジトリ。[chezmoi](https://chezmoi.io/) で管理。macOSとWindowsの環境設定を管理。
 
 ## 構造
 
 ```
 dotfiles/
-├── mac/
-│   ├── claude/        # Claude Code設定 (CLAUDE.md, settings.json)
-│   ├── ghostty/       # Ghosttyターミナル設定
-│   ├── git/           # Git設定 (.gitconfig, .gitconfig.user, ignore)
-│   ├── nvim/          # Neovim設定 (LazyVim)
-│   ├── starship/      # Starshipプロンプト設定
-│   └── zsh/           # Zsh設定 (.zshrc)
+├── .chezmoi.toml.tmpl          # chezmoi設定テンプレート（Git user情報）
+├── Brewfile                    # Homebrewパッケージリスト
+├── dot_zshrc                   # ~/.zshrc
+├── dot_gitconfig.tmpl          # ~/.gitconfig（テンプレート）
+├── dot_config/
+│   ├── git/ignore              # ~/.config/git/ignore
+│   ├── starship/starship.toml  # ~/.config/starship.toml
+│   ├── nvim/                   # ~/.config/nvim/（LazyVim）
+│   └── ghostty/config          # ~/.config/ghostty/config
+├── dot_claude/
+│   ├── CLAUDE.md               # ~/.claude/CLAUDE.md
+│   └── settings.json           # ~/.claude/settings.json
+├── dot_zsh/hooks/brew.zsh      # ~/.zsh/hooks/brew.zsh
+├── run_onchange_install-packages.sh.tmpl  # Homebrewパッケージインストール
+├── run_once_setup-macos.sh     # macOS初期設定
+├── run_once_setup-secrets.sh.tmpl  # ~/.secrets/ ディレクトリのセットアップ
 └── windows/
-    └── terminal/      # Windows Terminal設定
+    └── terminal/               # Windows Terminal設定
 ```
+
+## chezmoi ファイル命名規則
+
+- `dot_` プレフィックス → ドットファイル/ディレクトリ（例: `dot_zshrc` → `~/.zshrc`）
+- `.tmpl` サフィックス → テンプレートファイル（chezmoi変数を使用）
+- `run_once_` プレフィックス → 初回のみ実行するスクリプト
+- `run_onchange_` プレフィックス → ファイル変更時に実行するスクリプト
 
 ## セットアップ
 
 ### macOS
 
 ```shell
-cd ~
-git clone https://github.com/shio3ch/dotfiles.git
-
-# シンボリックリンクを作成
-ln -sf ~/dotfiles/mac/zsh/.zshrc ~/.zshrc
-ln -sf ~/dotfiles/mac/starship/starship.toml ~/.config/starship.toml
-ln -sf ~/dotfiles/mac/git/.gitconfig ~/.gitconfig
-ln -sf ~/dotfiles/mac/git/ignore ~/.config/git/ignore
-
-# git ユーザー情報（初回のみコピー、実際の値を記入）
-cp ~/dotfiles/mac/git/.gitconfig.user ~/.gitconfig.user
-# ~/.gitconfig.user に name と email を設定すること
-
-# Neovim（既存の設定がある場合は先にバックアップ）
-# mv ~/.config/nvim ~/.config/nvim.bak
-ln -sfn ~/dotfiles/mac/nvim ~/.config/nvim
-
-# Ghostty
-ln -sf ~/dotfiles/mac/ghostty/config ~/.config/ghostty/config
-
-# Claude Code
-ln -sf ~/dotfiles/mac/claude/CLAUDE.md ~/.claude/CLAUDE.md
-ln -sf ~/dotfiles/mac/claude/settings.json ~/.claude/settings.json
+brew install chezmoi
+chezmoi init --apply https://github.com/shio3ch/dotfiles.git
 ```
 
 ## 開発ルール
 
 ### 設定ファイルの追加・変更時
 
-新しいツールの設定を追加、または既存の設定構造を変更した場合、以下のファイルも必ず同期すること:
+1. このリポジトリ内のファイルを直接編集する（`chezmoi edit` でも可）
+2. 変更後は必ず `chezmoi apply` で `$HOME` に反映する
+3. 新しいツールの設定を追加・構造変更した場合は **`.claude/CLAUDE.md`** の構造セクションも更新すること
 
-1. **`mac/.bin/install.sh`** - シンボリックリンク作成処理を追加
-2. **`.claude/CLAUDE.md`** - 構造セクションとセットアップ手順を更新
-3. 必要に応じて使用ツールセクションも更新
+```shell
+# 変更を確認してから適用
+chezmoi diff
+chezmoi apply
+
+# または alias を使う（dot_zshrc に定義済み）
+cdiff   # chezmoi diff
+capply  # chezmoi apply
+cupdate # chezmoi update（リモートから pull して apply）
+```
 
 ## 使用ツール
 
+- **chezmoi**: dotfiles管理ツール
 - **Claude Code**: AI搭載のCLI開発ツール
 - **Ghostty**: Catppuccin Mochaテーマのターミナルエミュレータ
 - **Starship**: Catppuccin Mochaテーマのシェルプロンプト

@@ -1,4 +1,0 @@
-[include]
-	path = ~/.gitconfig.user
-[core]
-	editor = vim

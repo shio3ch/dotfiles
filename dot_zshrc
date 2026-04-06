@@ -35,6 +35,11 @@ alias vim='nvim'
 # lazygit
 alias lgit='lazygit'
 
+# chezmoi
+alias cdiff='chezmoi diff'
+alias capply='chezmoi apply'
+alias cupdate='chezmoi update'
+
 
 # pnpm
 export PNPM_HOME="/Users/shio3ch/Library/pnpm"
