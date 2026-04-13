@@ -1,6 +1,10 @@
 [ -r /etc/zshrc ] && . /etc/zshrc
 
 # -------------------------------------------------------------
+# Completion
+autoload -U compinit && compinit
+
+# -------------------------------------------------------------
 # Load secrets (API keys, tokens, etc.)
 for file in ~/.secrets/*.sh(N); do
   source "$file"
