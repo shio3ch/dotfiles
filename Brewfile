@@ -1,3 +1,4 @@
+brew "bat"
 brew "fontconfig"
 brew "ripgrep"
 brew "codex"
