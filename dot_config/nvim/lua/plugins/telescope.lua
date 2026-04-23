@@ -13,7 +13,7 @@ return {
     {
       "<leader>ff",
       function()
-        require("telescope.builtin").find_files()
+        require("telescope.builtin").find_files({ hidden = true })
       end,
       desc = "Find Files",
     },
@@ -38,11 +38,26 @@ return {
       end,
       desc = "Help Tags",
     },
+    {
+      "<leader>fr",
+      function()
+        require("telescope.builtin").oldfiles()
+      end,
+      desc = "Recent Files",
+    },
+    {
+      "<leader>fs",
+      function()
+        require("telescope.builtin").git_status()
+      end,
+      desc = "Git Status",
+    },
   },
   opts = function(_, opts)
     local actions = require("telescope.actions")
 
     opts.defaults = vim.tbl_deep_extend("force", opts.defaults or {}, {
+      file_ignore_patterns = { "node_modules/", ".git/", "%.lock", "dist/", "build/" },
       mappings = {
         i = {
           ["<C-j>"] = actions.move_selection_next,
