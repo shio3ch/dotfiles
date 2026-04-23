@@ -13,7 +13,7 @@ return {
     {
       "<leader>ff",
       function()
-        require("telescope.builtin").find_files()
+        require("telescope.builtin").find_files({ hidden = true })
       end,
       desc = "Find Files",
     },
@@ -38,15 +38,53 @@ return {
       end,
       desc = "Help Tags",
     },
+    {
+      "<leader>fr",
+      function()
+        require("telescope.builtin").oldfiles()
+      end,
+      desc = "Recent Files",
+    },
+    {
+      "<leader>fs",
+      function()
+        require("telescope.builtin").lsp_document_symbols()
+      end,
+      desc = "Document Symbols",
+    },
+    {
+      "<leader>fd",
+      function()
+        require("telescope.builtin").diagnostics()
+      end,
+      desc = "Diagnostics",
+    },
+    {
+      "<leader>gc",
+      function()
+        require("telescope.builtin").git_commits()
+      end,
+      desc = "Git Commits",
+    },
+    {
+      "<leader>gs",
+      function()
+        require("telescope.builtin").git_status()
+      end,
+      desc = "Git Status",
+    },
   },
   opts = function(_, opts)
     local actions = require("telescope.actions")
 
     opts.defaults = vim.tbl_deep_extend("force", opts.defaults or {}, {
+      path_display = { "smart" },
+      file_ignore_patterns = { "node_modules/", ".git/", "%.lock" },
       mappings = {
         i = {
           ["<C-j>"] = actions.move_selection_next,
           ["<C-k>"] = actions.move_selection_previous,
+          ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
         },
       },
     })
