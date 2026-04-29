@@ -17,7 +17,7 @@ dotfiles/
 ├── dot_config/
 │   ├── git/ignore              # ~/.config/git/ignore
 │   ├── starship/starship.toml  # ~/.config/starship.toml
-│   ├── nvim/                   # ~/.config/nvim/（LazyVim）
+│   ├── nvim/                   # ~/.config/nvim/（LazyVim、JS/TS開発環境込み）
 │   └── ghostty/config          # ~/.config/ghostty/config
 ├── dot_claude/
 │   ├── CLAUDE.md               # ~/.claude/CLAUDE.md

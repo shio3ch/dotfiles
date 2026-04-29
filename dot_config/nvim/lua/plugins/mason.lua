@@ -3,8 +3,10 @@ return {
   "mason-org/mason.nvim",
   opts = {
     ensure_installed = {
-      -- Markdownフォーマッター
       "prettier",
+      "stylua",
+      "typescript-language-server",
+      "eslint-lsp",
     },
   },
 }
