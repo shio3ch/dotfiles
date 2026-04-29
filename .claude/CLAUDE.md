@@ -46,24 +46,38 @@ brew install chezmoi
 chezmoi init --apply https://github.com/shio3ch/dotfiles.git
 ```
 
+## chezmoi のソース構成
+
+chezmoi のソースディレクトリは `~/.local/share/chezmoi/`（`chezmoi init` 時に自動作成）。
+`~/workspace/dotfiles/` は開発用クローンであり、chezmoi は直接参照しない。
+
+```
+~/workspace/dotfiles/   # 開発用クローン（編集・PR作業はここ）
+~/.local/share/chezmoi/ # chezmoiが参照するソース（GitHub経由で同期）
+```
+
 ## 開発ルール
 
 ### 設定ファイルの追加・変更時
 
-1. このリポジトリ内のファイルを直接編集する（`chezmoi edit` でも可）
-2. 変更後は必ず `chezmoi apply` で `$HOME` に反映する
-3. 新しいツールの設定を追加・構造変更した場合は **`.claude/CLAUDE.md`** の構造セクションも更新すること
+1. `~/workspace/dotfiles/` のファイルを直接編集する
+2. feature ブランチを切って PR を作成・マージする
+3. マージ後に `cupdate` で `~/.local/share/chezmoi/` に反映＆`$HOME` に適用する
+4. 新しいツールの設定を追加・構造変更した場合は **`.claude/CLAUDE.md`** の構造セクションも更新すること
 
 ```shell
-# 変更を確認してから適用
-chezmoi diff
-chezmoi apply
+# 正しいワークフロー
+# 1. 編集 → commit → PR → merge
 
-# または alias を使う（dot_zshrc に定義済み）
-cdiff   # chezmoi diff
-capply  # chezmoi apply
-cupdate # chezmoi update（リモートから pull して apply）
+# 2. マージ後に反映（alias は dot_zshrc に定義済み）
+cupdate  # chezmoi update = GitHub から pull して $HOME に apply
+
+# 差分確認だけしたい場合
+cdiff    # chezmoi diff
 ```
+
+> **注意**: `chezmoi apply`（`capply`）は `~/.local/share/chezmoi/` の内容を適用するもので、
+> `~/workspace/dotfiles/` の変更は反映されない。必ず `cupdate` を使うこと。
 
 ## 使用ツール
 
