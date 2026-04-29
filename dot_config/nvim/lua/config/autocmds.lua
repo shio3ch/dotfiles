@@ -10,6 +10,10 @@
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "neo-tree",
   callback = function()
-    vim.opt_local.winhighlight = "Normal:Normal,NormalNC:NormalNC,EndOfBuffer:EndOfBuffer"
+    vim.schedule(function()
+      vim.api.nvim_set_hl(0, "NeoTreeNormal", { link = "Normal" })
+      vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { link = "NormalNC" })
+      vim.api.nvim_set_hl(0, "NeoTreeEndOfBuffer", { link = "EndOfBuffer" })
+    end)
   end,
 })
