@@ -4,11 +4,16 @@ return {
   opts = {
     -- 各言語のフォーマッター設定
     formatters_by_ft = {
+      lua = { "stylua" },
       markdown = { "prettier" },
-      -- 他の言語のフォーマッターもここに追加可能
-      -- lua = { "stylua" },
-      -- javascript = { "prettier" },
-      -- typescript = { "prettier" },
+      javascript = { "prettier" },
+      javascriptreact = { "prettier" },
+      typescript = { "prettier" },
+      typescriptreact = { "prettier" },
+      json = { "prettier" },
+      jsonc = { "prettier" },
+      css = { "prettier" },
+      html = { "prettier" },
     },
   },
 }
