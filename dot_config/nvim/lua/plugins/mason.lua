@@ -7,6 +7,8 @@ return {
       "stylua",
       "typescript-language-server",
       "eslint-lsp",
+      "pyright",
+      "ruff",
     },
   },
 }
