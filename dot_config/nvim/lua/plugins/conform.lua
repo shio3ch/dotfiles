@@ -5,6 +5,7 @@ return {
     -- 各言語のフォーマッター設定
     formatters_by_ft = {
       lua = { "stylua" },
+      python = { "ruff_format" },
       markdown = { "prettier" },
       javascript = { "prettier" },
       javascriptreact = { "prettier" },
