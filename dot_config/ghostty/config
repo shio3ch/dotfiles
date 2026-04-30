@@ -54,7 +54,7 @@
 
 #theme = light:Catppuccin Latte,dark:Catppuccin Mocha
 theme = Catppuccin Mocha
-background-opacity = 0.85
+background-opacity = 0.92
 background-blur-radius = 15
 #font-family = "CaskaydiaCove Nerd Font Mono"
 #font-family = "Maple Mono"
