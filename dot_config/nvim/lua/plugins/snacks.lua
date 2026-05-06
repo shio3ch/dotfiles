@@ -6,7 +6,7 @@ return {
         explorer = {
           hidden = true,
           git_untracked = true,
-          git_ignored = true,
+          ignored = true,
         },
       },
     },
