@@ -5,3 +5,7 @@
 # chezmoi スクリプトから参照するだけの補助ファイル
 ubuntu/
 secrets/
+
+# リポジトリ開発用の検証ツール・期待値
+scripts/
+tests/

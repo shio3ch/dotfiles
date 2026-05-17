@@ -1,0 +1,314 @@
+{
+  "command": "chezmoi apply --dry-run --verbose",
+  "entries": [
+    {
+      "diff_sha256": "d3242aeaf32329bc1c7e12dca7f0746be84a863c18097f2d06bbc1d93bf3bc37",
+      "mode": "40775",
+      "operation": "create",
+      "path": ".claude"
+    },
+    {
+      "diff_sha256": "c8e1b0ed5cdbec9ffec0f2b4acda09264260b6e8dc8b504adef624bce67b33a1",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".claude/CLAUDE.md"
+    },
+    {
+      "diff_sha256": "ba0d1795c5ea6837de21935bc0d260f1a39f23085a896a1c7ce77163b7eabde5",
+      "mode": "40775",
+      "operation": "create",
+      "path": ".config"
+    },
+    {
+      "diff_sha256": "401e73142fbd1e146b5f0ad6f31e97a37f29ff48ea98c2122693c55f0ef25975",
+      "mode": "40775",
+      "operation": "create",
+      "path": ".config/ghostty"
+    },
+    {
+      "diff_sha256": "caef158e5dc2cb0e4434a29e827ae706007b64e635bb418faa05895be738c254",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".config/ghostty/config"
+    },
+    {
+      "diff_sha256": "4140aebb0c7f30f3f0d1d0c761aa7f45066140b77e635d0866c055ea4412b3e0",
+      "mode": "40775",
+      "operation": "create",
+      "path": ".config/git"
+    },
+    {
+      "diff_sha256": "8e002d42da5144a840cdc9825559a14c2fd26abe0437aef1b75ec1e89f9cfd98",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".config/git/ignore"
+    },
+    {
+      "diff_sha256": "4ff22c7a044ba0aa18b96b370d339f8f7b230175111fd8c04e2f07293efef497",
+      "mode": "40775",
+      "operation": "create",
+      "path": ".config/nvim"
+    },
+    {
+      "diff_sha256": "4618d92b95b68a8d17ce4ce9890af6224cf4833374ea2db57a0f8660818ddbdc",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".config/nvim/.gitignore"
+    },
+    {
+      "diff_sha256": "2f0d51e108800ad7ffabfd958964e71f2bdc8dfec2ffa4aba8c585b141f0c4c9",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".config/nvim/.neoconf.json"
+    },
+    {
+      "diff_sha256": "9b652b2d0176c800768afbda30de30fe472d7a80ccd8c53bd2f6d2e0ea997122",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".config/nvim/LICENSE"
+    },
+    {
+      "diff_sha256": "53f4cac5c3b70c1c2b903004a832df66eca747d620e0d8ea47c020a90d95701c",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".config/nvim/README.md"
+    },
+    {
+      "diff_sha256": "f7573bfee6e5e2a91596edc11f0463fe004218bf65a8320fdfd8f1c745e8b22c",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".config/nvim/init.lua"
+    },
+    {
+      "diff_sha256": "d5a87bcb47f941d481df82dfe611c57a97ac9d6704511030c82d30d71dc8dd08",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".config/nvim/lazyvim.json"
+    },
+    {
+      "diff_sha256": "1357a1373edabc8bfada4c3062583b075ebe6dd7a1bfb2c2e37d64b6da0888b3",
+      "mode": "40775",
+      "operation": "create",
+      "path": ".config/nvim/lua"
+    },
+    {
+      "diff_sha256": "482b8b914ddcad9e77017037a559b54248685a17b803b738c8a353386422bb36",
+      "mode": "40775",
+      "operation": "create",
+      "path": ".config/nvim/lua/config"
+    },
+    {
+      "diff_sha256": "448c8407d60b21ab968da97e76137715e20b31c831b19fee5cad12f5baf2d6c8",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".config/nvim/lua/config/autocmds.lua"
+    },
+    {
+      "diff_sha256": "01b9cdb7953bc26d42548704cafee24ed6c105b35454a3f7fe2203a9f5d8cc35",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".config/nvim/lua/config/keymaps.lua"
+    },
+    {
+      "diff_sha256": "59a1ff24a1ef0abd125dc3ef9f65ad92a5d4bee4396be35ee3d4a7fbac2ae18b",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".config/nvim/lua/config/lazy.lua"
+    },
+    {
+      "diff_sha256": "b88d0dc2cb328eb6c3305ba6cd73624b3a6364cd797f78a57b4bff290c610d81",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".config/nvim/lua/config/options.lua"
+    },
+    {
+      "diff_sha256": "8ffa947a1f52c5c362154bb1e2be7aecb501210a15d5a15adcee33bb966cb357",
+      "mode": "40775",
+      "operation": "create",
+      "path": ".config/nvim/lua/plugins"
+    },
+    {
+      "diff_sha256": "aa61365ab887d4a086412733ea212089ff705b2ece97602e814a0508525c3752",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".config/nvim/lua/plugins/colorscheme.lua"
+    },
+    {
+      "diff_sha256": "b1cc1728baa7ebc29619b1b4dc656365e404bca5037c1076dff5648aa940a143",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".config/nvim/lua/plugins/conform.lua"
+    },
+    {
+      "diff_sha256": "776c024152f74d032e704362234f329bffca1102169fa75588ad2c5b5ed0b9c5",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".config/nvim/lua/plugins/copilot.lua"
+    },
+    {
+      "diff_sha256": "1daef15912484ee345894c4667fea8779d05c4653ac5bf8ba6822b9b2edfc583",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".config/nvim/lua/plugins/example.lua"
+    },
+    {
+      "diff_sha256": "a1debb3e5a7c43d3bae47cd684d4d35322ef248d4affd863f8317d9931eec550",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".config/nvim/lua/plugins/hlchunk.lua"
+    },
+    {
+      "diff_sha256": "e402d6c3f9bbadc857ed512f9a918ef0c0542a86843bce21bf98d1776a143f6d",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".config/nvim/lua/plugins/mason.lua"
+    },
+    {
+      "diff_sha256": "09893d831c961e5613c53b1bef8766b9e80d409be082bbbe8c72c6c5d0ea5531",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".config/nvim/lua/plugins/neo-tree.lua"
+    },
+    {
+      "diff_sha256": "fabe15e3b535d70b06ebf071b6600cbeb2ae6001feeab03c4d85115acdfd6296",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".config/nvim/lua/plugins/neoscroll.lua"
+    },
+    {
+      "diff_sha256": "e18d1f0d13042a32b4d5d7c1882b1f3fbef350b93432b74a5a3e79fd3a585207",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".config/nvim/lua/plugins/neotest.lua"
+    },
+    {
+      "diff_sha256": "1d408ae9940ddcc72f872d80495fd539bbbae203c1d70aec01d888394f49be2f",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".config/nvim/lua/plugins/python.lua"
+    },
+    {
+      "diff_sha256": "32f75c5715b2361354859657ece90a38bdec78095973877eaf5a94a5db812e8d",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".config/nvim/lua/plugins/snacks.lua"
+    },
+    {
+      "diff_sha256": "34e12076de7d485d2adee285a6e344a07f698633b0af2410536d6003bd206651",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".config/nvim/lua/plugins/telescope.lua"
+    },
+    {
+      "diff_sha256": "f28092a629e8dd7b9a732b9188bcdff270832aadea0e498104a47bb31ac125b0",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".config/nvim/stylua.toml"
+    },
+    {
+      "diff_sha256": "32346a44e1c355cfec8253d37660085e830c26e21d3e75c500f87ce546562714",
+      "mode": "40775",
+      "operation": "create",
+      "path": ".config/starship"
+    },
+    {
+      "diff_sha256": "191da66361b9e08f03e7fc12491ea1a812fade45f2394a7a2a229884b062c2cf",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".config/starship/starship.toml"
+    },
+    {
+      "diff_sha256": "f11573ff60a3de8f18b4f7433cc9f28cc67b4d8babf632373615d476a098f509",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".gitconfig"
+    },
+    {
+      "diff_sha256": "2c2f3f1a37848a7dc67c2b58c059e4bc9744b053c0f0989cd86dee697bff9724",
+      "mode": "40775",
+      "operation": "create",
+      "path": ".zsh"
+    },
+    {
+      "diff_sha256": "233f30fd890ee5e5e3185192f3673102160b77d6ed34f35637ccf7a3197bf5f4",
+      "mode": "40775",
+      "operation": "create",
+      "path": ".zsh/hooks"
+    },
+    {
+      "diff_sha256": "7fa32bb8409c21e97791418ebd77bb12524909e6b60dc83d89caee88222f7ff8",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".zsh/hooks/brew.zsh"
+    },
+    {
+      "diff_sha256": "b2396dca586e68115713316d86d3e7db8dd6d0a285028bc31ed5b4fb8da238ae",
+      "mode": "100664",
+      "operation": "create",
+      "path": ".zshrc"
+    },
+    {
+      "diff_sha256": "38b8b12505c6320554bff7e08c0596f7d23d7ed275c6b0e9ba03b87872b72386",
+      "mode": "100664",
+      "operation": "create",
+      "path": "Brewfile"
+    },
+    {
+      "diff_sha256": "82e06cf8c4379cbc9d837116a6a2033fea3455d5e6f752d399777a2df0800081",
+      "mode": "100664",
+      "operation": "create",
+      "path": "README.md"
+    },
+    {
+      "diff_sha256": "806f41593edee7f92821d89fd20a939aef9b8a39695e6b1e94f175cce7d96e74",
+      "mode": "100755",
+      "operation": "create",
+      "path": "install-packages.sh"
+    },
+    {
+      "diff_sha256": "fb8ca8f9965d7807a9e3eef2b5e5f8dac02e950ca9ed04de3b6471ab4863871b",
+      "mode": "100755",
+      "operation": "create",
+      "path": "setup-macos.sh"
+    },
+    {
+      "diff_sha256": "16cb494c965483a782a7b827cb791405d8675bb9421c87236c4f02be78e03478",
+      "mode": "100755",
+      "operation": "create",
+      "path": "setup-secrets.sh"
+    },
+    {
+      "diff_sha256": "e25f700d9f3763903e76958ddb88ead972217f422141fa0113c686600580da60",
+      "mode": "100755",
+      "operation": "create",
+      "path": "setup-ubuntu.sh"
+    },
+    {
+      "diff_sha256": "fbb4007defddb0801ea5031102b0489183eae8e2d6c1c7ab75434d38af9c2b0d",
+      "mode": "40775",
+      "operation": "create",
+      "path": "windows"
+    },
+    {
+      "diff_sha256": "0df6b5c043931fa80790ca897d192b8737fec2d3849073babc105c9c71c8e572",
+      "mode": "40775",
+      "operation": "create",
+      "path": "windows/terminal"
+    },
+    {
+      "diff_sha256": "f20e0654ae1212dcf93067bd21aafeab65a959517a06e50fbf348cfebec69e69",
+      "mode": "100664",
+      "operation": "create",
+      "path": "windows/terminal/settings.json"
+    }
+  ],
+  "entry_count": 50,
+  "normalization": {
+    "content": "diff body is represented by sha256 only",
+    "paths": "destination-relative POSIX paths",
+    "raw_diff": "not stored",
+    "stderr": "excluded because it may contain local chezmoi warnings"
+  },
+  "os": "linux",
+  "schema": 1
+}

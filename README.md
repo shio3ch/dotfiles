@@ -83,6 +83,20 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- -b "$HOME/.local/bin"
 chezmoi update
 ```
 
+## Dry Run 期待値テスト
+
+Ubuntu / Linux 向けの `chezmoi apply --dry-run --verbose` を、一時 HOME と fixture config で実行して検証できます。Dry Run の生 diff は Git 管理せず、正規化した期待値 JSON だけを `tests/expected/linux/apply-dry-run.json` に保存します。
+
+```shell
+# 期待値を更新
+scripts/update-chezmoi-expected.sh linux
+
+# 現在の Dry Run 結果と期待値を比較
+scripts/test-chezmoi-expected.sh linux
+```
+
+macOS / Darwin の期待値は、別 PR で実機確認して追加する想定です。
+
 ## dotfiles の編集
 
 ```shell
