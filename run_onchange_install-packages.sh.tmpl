@@ -1,7 +1,8 @@
 #!/bin/bash
-# Brewfile sha: {{ include "Brewfile" | sha256sum }}
+# Package manifest sha: {{ include "Brewfile" | sha256sum }} {{ include "ubuntu/packages.txt" | sha256sum }}
 set -e
 
+{{- if eq .chezmoi.os "darwin" }}
 echo "=== Installing Homebrew packages ==="
 if command -v brew &>/dev/null; then
     brew update
@@ -10,3 +11,41 @@ if command -v brew &>/dev/null; then
 else
     echo "Warning: Homebrew not found. Please install it first: https://brew.sh/"
 fi
+{{- else if eq .chezmoi.os "linux" }}
+echo "=== Installing Ubuntu packages ==="
+if ! command -v apt-get >/dev/null 2>&1; then
+    echo "Skipping: apt-get not found."
+    exit 0
+fi
+
+if command -v sudo >/dev/null 2>&1; then
+    SUDO="sudo"
+else
+    SUDO=""
+fi
+
+$SUDO apt-get update
+
+packages=()
+while IFS= read -r package; do
+    [ -z "$package" ] && continue
+    case "$package" in \#*) continue ;; esac
+    if apt-cache show "$package" >/dev/null 2>&1; then
+        packages+=("$package")
+    else
+        echo "Warning: apt package not found, skipping: $package"
+    fi
+done < "{{ .chezmoi.sourceDir }}/ubuntu/packages.txt"
+
+if [ ${#packages[@]} -gt 0 ]; then
+    $SUDO apt-get install -y "${packages[@]}"
+fi
+
+if command -v corepack >/dev/null 2>&1; then
+    corepack enable || true
+fi
+
+echo "Done."
+{{- else }}
+echo "Skipping package installation on {{ .chezmoi.os }}."
+{{- end }}

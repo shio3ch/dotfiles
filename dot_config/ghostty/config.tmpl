@@ -1,52 +1,5 @@
 # This is the configuration file for Ghostty.
-#
-# This template file has been automatically created at the following
-# path since Ghostty couldn't find any existing config files on your system:
-#
-#   /Users/shio3ch/Library/Application Support/com.mitchellh.ghostty/config
-#
-# The template does not set any default options, since Ghostty ships
-# with sensible defaults for all options. Users should only need to set
-# options that they want to change from the default.
-#
-# Run `ghostty +show-config --default --docs` to view a list of
-# all available config options and their default values.
-#
-# Additionally, each config option is also explained in detail
-# on Ghostty's website, at https://ghostty.org/docs/config.
-#
-# Ghostty can reload the configuration while running by using the menu
-# options or the bound key (default: Command + Shift + comma on macOS and
-# Control + Shift + comma on other platforms). Not all config options can be
-# reloaded while running; some only apply to new windows and others may require
-# a full restart to take effect.
-
-# Config syntax crash course
-# ==========================
-# # The config file consists of simple key-value pairs,
-# # separated by equals signs.
-# font-family = Iosevka
-# window-padding-x = 2
-#
-# # Spacing around the equals sign does not matter.
-# # All of these are identical:
-# key=value
-# key= value
-# key =value
-# key = value
-#
-# # Any line beginning with a # is a comment. It's not possible to put
-# # a comment after a config option, since it would be interpreted as a
-# # part of the value. For example, this will have a value of "#123abc":
-# background = #123abc
-#
-# # Empty values are used to reset config keys to default.
-# key =
-#
-# # Some config options have unique syntaxes for their value,
-# # which is explained in the docs for that config option.
-# # Just for example:
-# resize-overlay-duration = 4s 200ms
+# Run `ghostty +show-config --default --docs` to view available options.
 
 # ========================================
 # テーマ設定
@@ -55,7 +8,9 @@
 #theme = light:Catppuccin Latte,dark:Catppuccin Mocha
 theme = Catppuccin Mocha
 background-opacity = 0.92
+{{- if eq .chezmoi.os "darwin" }}
 background-blur-radius = 15
+{{- end }}
 #font-family = "CaskaydiaCove Nerd Font Mono"
 #font-family = "Maple Mono"
 font-family = "Maple Mono NF CN"
@@ -81,24 +36,21 @@ window-save-state = always
 # 画面分割したときにpathが引き継がれる
 window-inherit-working-directory = true
 
+{{- if eq .chezmoi.os "darwin" }}
 # タイトルバーを非表示にする
 macos-titlebar-style = tabs
+{{- end }}
 
+{{- if eq .chezmoi.os "darwin" }}
 # ========================================
 # クイックターミナルの有効化
 # ========================================
-
-# クイックターミナル
 quick-terminal-position = "left"
 quick-terminal-screen = "main"
 quick-terminal-size = 45%
 quick-terminal-animation-duration = 0.3
 keybind = "global:shift+alt+space=toggle_quick_terminal"
-
-
-# 起動時に前の作業フォルダを引き継ぐ（快適）
-window-save-state = always
-
+{{- end }}
 
 # 非アクティブなウインドウを薄くしない
 unfocused-split-opacity = 0.7
@@ -126,12 +78,9 @@ shell-integration-features = cursor,sudo,title
 # キーバインド
 # ========================================
 
+{{- if eq .chezmoi.os "darwin" }}
 # 設定リロード
 keybind = cmd+shift+comma=reload_config
-
-# shift+enterを改行扱いする（v2）
-#keybind = shift+enter=text:\x1b\r
-keybind = shift+enter=text:\n
 
 # split
 keybind = cmd+w=close_surface
@@ -145,6 +94,27 @@ keybind = ctrl+cmd+l=goto_split:right
 # プロンプト間ジャンプ（Claude Codeの出力を素早く確認）
 keybind = cmd+up=jump_to_prompt:-1
 keybind = cmd+down=jump_to_prompt:1
+{{- else }}
+# 設定リロード
+keybind = ctrl+shift+comma=reload_config
+
+# split
+keybind = ctrl+shift+w=close_surface
+
+# スプリット間移動（Vim風）
+keybind = ctrl+alt+h=goto_split:left
+keybind = ctrl+alt+j=goto_split:bottom
+keybind = ctrl+alt+k=goto_split:top
+keybind = ctrl+alt+l=goto_split:right
+
+# プロンプト間ジャンプ
+keybind = ctrl+up=jump_to_prompt:-1
+keybind = ctrl+down=jump_to_prompt:1
+{{- end }}
+
+# shift+enterを改行扱いする（v2）
+#keybind = shift+enter=text:\x1b\r
+keybind = shift+enter=text:\n
 
 # ========================================
 # その他の設定
@@ -158,6 +128,7 @@ notify-on-command-finish-after = 2s
 # リンクのプレビュー
 link-previews = true
 
+{{- if eq .chezmoi.os "darwin" }}
 # アイコンの変更
 macos-icon = xray
-
+{{- end }}

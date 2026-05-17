@@ -1,9 +1,13 @@
 #!/bin/bash
 set -e
 
+{{- if eq .chezmoi.os "darwin" }}
 echo "=== Configuring macOS settings ==="
 defaults write com.apple.finder AppleShowAllFiles TRUE
 echo "  Finder: Show hidden files"
 killall Finder
 echo "  Finder: Restarted to apply settings"
 echo "Done."
+{{- else }}
+echo "Skipping macOS settings on {{ .chezmoi.os }}."
+{{- end }}
