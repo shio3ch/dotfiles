@@ -1,3 +1,7 @@
 # 外部ツールが自動更新するファイル
 .config/nvim/lazy-lock.json
 .claude/settings.json
+
+# chezmoi スクリプトから参照するだけの補助ファイル
+ubuntu/
+secrets/

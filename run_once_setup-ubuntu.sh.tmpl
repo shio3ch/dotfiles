@@ -1,0 +1,35 @@
+#!/bin/bash
+set -e
+
+{{- if eq .chezmoi.os "linux" }}
+echo "=== Configuring Ubuntu settings ==="
+
+if command -v apt-get >/dev/null 2>&1; then
+    echo "  apt-based system detected"
+else
+    echo "  Skipping: apt-get not found."
+    exit 0
+fi
+
+# Ubuntu では fd/bat の実行ファイル名が fdfind/batcat になる環境があるため、
+# ~/.local/bin に互換 symlink を作る。
+mkdir -p "$HOME/.local/bin"
+
+if command -v fdfind >/dev/null 2>&1 && ! command -v fd >/dev/null 2>&1; then
+    ln -sf "$(command -v fdfind)" "$HOME/.local/bin/fd"
+    echo "  Linked fd -> fdfind"
+fi
+
+if command -v batcat >/dev/null 2>&1 && ! command -v bat >/dev/null 2>&1; then
+    ln -sf "$(command -v batcat)" "$HOME/.local/bin/bat"
+    echo "  Linked bat -> batcat"
+fi
+
+if [ -n "$SHELL" ] && command -v zsh >/dev/null 2>&1 && [ "$SHELL" != "$(command -v zsh)" ]; then
+    echo "  zsh is installed. To make it the login shell, run: chsh -s $(command -v zsh)"
+fi
+
+echo "Done."
+{{- else }}
+echo "Skipping Ubuntu settings on {{ .chezmoi.os }}."
+{{- end }}
