@@ -95,12 +95,13 @@ def finish_current():
     new_hash = current.pop("new_hash", None)
     body = "".join(current_body).encode("utf-8")
 
-    if old_hash == "0" * 40 and new_hash and new_hash != "0" * 40:
-        current["operation"] = "create"
-    elif new_hash == "0" * 40 and old_hash and old_hash != "0" * 40:
-        current["operation"] = "delete"
-    else:
-        current["operation"] = "modify"
+    if "operation" not in current:
+        if old_hash == "0" * 40 and new_hash and new_hash != "0" * 40:
+            current["operation"] = "create"
+        elif new_hash == "0" * 40 and old_hash and old_hash != "0" * 40:
+            current["operation"] = "delete"
+        else:
+            current["operation"] = "modify"
 
     # 生 diff の本文は保存しない。変更内容の同一性だけ検証するため、
     # diff ブロック単位の sha256 を保持する。
